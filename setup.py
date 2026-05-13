@@ -56,6 +56,8 @@ setuptools.setup(
             "configs.*",
             "data_loader",
             "data_loader.*",
+            "radfoam",
+            "radfoam.*",
             "radfoam_model",
             "radfoam_model.*",
         ],
