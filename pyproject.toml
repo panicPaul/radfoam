@@ -4,6 +4,7 @@ requires = [
     "pybind11",
     "glfw==2.6.5",
     "cmake_build_extension",
+    "nvidia-cuda-cccl",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -22,6 +23,7 @@ dependencies = [
     "einops",
     "glfw==2.6.5",
     "opencv-python",
+    "nvidia-cuda-cccl",
     "pillow",
     "plyfile",
     "pybind11[global]",

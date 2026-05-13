@@ -29,6 +29,7 @@ install_requirements = [
     "ConfigArgParse",
     "einops",
     "glfw==2.6.5",
+    "nvidia-cuda-cccl",
     "pycolmap",
     "opencv-python",
     "pillow",

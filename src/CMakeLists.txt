@@ -2,6 +2,11 @@ find_package(CUDAToolkit REQUIRED)
 
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0 -D_USE_MATH_DEFINES)
 
+set(NVIDIA_CCCL_INCLUDE_DIR "${Python3_SITELIB}/nvidia/cu13/include/cccl")
+if(EXISTS "${NVIDIA_CCCL_INCLUDE_DIR}")
+  list(APPEND RADFOAM_CUDA_INCLUDES ${NVIDIA_CCCL_INCLUDE_DIR})
+endif()
+
 list(
   APPEND
   RADFOAM_INCLUDES
@@ -9,7 +14,8 @@ list(
   ${CMAKE_SOURCE_DIR}/external/submodules/eigen
   ${CMAKE_SOURCE_DIR}/external/submodules/atomic_queue/include
   ${GLFW_INCLUDES}
-  ${CUDAToolkit_INCLUDE_DIRS})
+  ${CUDAToolkit_INCLUDE_DIRS}
+  ${RADFOAM_CUDA_INCLUDES})
 
 list(APPEND RADFOAM_CXX_SOURCES viewer/viewer.cpp utils/batch_fetcher.cpp)
 list(
