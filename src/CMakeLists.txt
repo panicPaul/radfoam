@@ -8,7 +8,8 @@ list(
   ${CMAKE_SOURCE_DIR}/external/submodules/termcolor/include
   ${CMAKE_SOURCE_DIR}/external/submodules/eigen
   ${CMAKE_SOURCE_DIR}/external/submodules/atomic_queue/include
-  ${GLFW_INCLUDES})
+  ${GLFW_INCLUDES}
+  ${CUDAToolkit_INCLUDE_DIRS})
 
 list(APPEND RADFOAM_CXX_SOURCES viewer/viewer.cpp utils/batch_fetcher.cpp)
 list(
