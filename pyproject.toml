@@ -10,11 +10,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "radfoam"
+version = "1.0.0"
 description = "Radiant Foam PyTorch bindings and training utilities."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
-dynamic = ["version"]
 dependencies = [
     "cmake==3.29.2",
     "cmake-format",
