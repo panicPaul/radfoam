@@ -42,7 +42,22 @@ install_requirements = [
 
 
 setuptools.setup(
+    name="radfoam",
     version=version,
+    description="Radiant Foam PyTorch bindings and training utilities.",
+    long_description=(source_dir / "README.md").read_text(),
+    long_description_content_type="text/markdown",
+    python_requires=">=3.10",
+    packages=setuptools.find_packages(
+        include=[
+            "configs",
+            "configs.*",
+            "data_loader",
+            "data_loader.*",
+            "radfoam_model",
+            "radfoam_model.*",
+        ],
+    ),
     install_requires=install_requirements,
     ext_modules=[
         cmake_build_extension.CMakeExtension(
