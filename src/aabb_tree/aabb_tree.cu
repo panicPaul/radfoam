@@ -109,8 +109,10 @@ void sort_points(CUDAArray<Vec3f> &points_buffer,
                     keys_in[i] = values_in[i].point.data[dim];
                 });
 
-                auto get_segment_offset = [=] __device__(const uint32_t &i) {
-                    return min(i * segment_size, num_points);
+                auto get_segment_offset = [=] __host__ __device__(
+                                              const uint32_t &i) -> uint32_t {
+                    uint32_t offset = i * segment_size;
+                    return offset < num_points ? offset : num_points;
                 };
 
                 auto segment_offset_begin = thrust::make_transform_iterator(
