@@ -5,8 +5,8 @@
 #include "cuda_helpers.h"
 
 #include <cub/iterator/arg_index_input_iterator.cuh>
-#include <cub/iterator/counting_input_iterator.cuh>
-#include <cub/iterator/discard_output_iterator.cuh>
+#include <thrust/iterator/counting_iterator.h>
+#include <thrust/iterator/discard_iterator.h>
 
 #include "unenumerate_iterator.cuh"
 
@@ -125,12 +125,12 @@ void copy_range(InputIterator begin,
         stream);
 }
 
-inline cub::CountingInputIterator<uint32_t> u32zero() {
-    return cub::CountingInputIterator<uint32_t>(0);
+inline thrust::counting_iterator<uint32_t> u32zero() {
+    return thrust::counting_iterator<uint32_t>(0);
 }
 
-inline cub::CountingInputIterator<uint64_t> u64zero() {
-    return cub::CountingInputIterator<uint64_t>(0);
+inline thrust::counting_iterator<uint64_t> u64zero() {
+    return thrust::counting_iterator<uint64_t>(0);
 }
 
 template <typename T>
@@ -143,8 +143,8 @@ inline UnenumerateIterator<T> unenumerate(T *begin) {
     return UnenumerateIterator<T>(begin);
 }
 
-inline cub::DiscardOutputIterator<> discard() {
-    return cub::DiscardOutputIterator();
+inline thrust::discard_iterator<> discard() {
+    return thrust::discard_iterator<>();
 }
 
 } // namespace radfoam

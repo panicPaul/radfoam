@@ -7,7 +7,6 @@
 #include <cub/device/device_reduce.cuh>
 #include <cub/device/device_scan.cuh>
 #include <cub/device/device_select.cuh>
-#include <cub/iterator/transform_input_iterator.cuh>
 
 #include "../utils/cuda_helpers.h"
 #include "../utils/geometry.h"

@@ -3,8 +3,7 @@
 
 #include <cub/device/device_radix_sort.cuh>
 #include <cub/device/device_segmented_radix_sort.cuh>
-#include <cub/iterator/counting_input_iterator.cuh>
-#include <cub/iterator/transform_input_iterator.cuh>
+#include <thrust/iterator/transform_iterator.h>
 
 #include "../utils/cuda_helpers.h"
 
@@ -114,11 +113,8 @@ void sort_points(CUDAArray<Vec3f> &points_buffer,
                     return min(i * segment_size, num_points);
                 };
 
-                auto segment_offset_begin =
-                    cub::TransformInputIterator<uint32_t,
-                                                decltype(get_segment_offset),
-                                                decltype(u32zero())>(
-                        u32zero(), get_segment_offset);
+                auto segment_offset_begin = thrust::make_transform_iterator(
+                    u32zero(), get_segment_offset);
 
                 CUB_CALL(cub::DeviceSegmentedRadixSort::SortPairs(
                     temp_data,
