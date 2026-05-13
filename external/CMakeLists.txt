@@ -49,6 +49,15 @@ target_include_directories(
 
 find_package(TBB GLOBAL)
 if(NOT TBB_FOUND)
+    set(TBB_STRICT
+        OFF
+        CACHE BOOL "Treat oneTBB compiler warnings as errors" FORCE)
+    set(TBB_TEST
+        OFF
+        CACHE BOOL "Build oneTBB tests" FORCE)
+    set(TBB_EXAMPLES
+        OFF
+        CACHE BOOL "Build oneTBB examples" FORCE)
     add_subdirectory(submodules/tbb)
 endif()
 
