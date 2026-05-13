@@ -37,6 +37,7 @@ install_requirements = [
     "pyyaml",
     "scipy",
     "tensorboard",
+    "torch>=2.11.0",
     "tqdm",
 ]
 
